@@ -17,6 +17,9 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 
+   
+        
+
 </head>
 
 <body>
@@ -26,7 +29,7 @@
             @include('admin.top-nav')
             <main class="h-full overflow-y-auto">
                 @yield('contents')
-            </main> 
+            </main>
         </div>
     </div>
 
@@ -39,8 +42,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
         integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous">
     </script>
-
-
+    
+    
 </body>
 
 

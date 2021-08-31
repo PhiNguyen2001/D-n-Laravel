@@ -21,9 +21,12 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('shop', 'HomeController@shop')->name('shop');
+Route::get('/shop', 'HomeController@shop')->name('shop');
 Route::get('/danh-muc/{id}','HomeController@product')->name('cate-pro');
 Route::get('/detail/{id}','HomeController@detail_product')->name('detail');
+Route::get('/search','HomeController@search')->name('search-pro');
+Route::get('/filter','HomeController@filter')->name('filter');
+
 
 Route::get('/login', [LoginController::class,'login'])->name('login');
 Route::post('/login', [LoginController::class, 'loginPost'])->name('frontend.loginPost');

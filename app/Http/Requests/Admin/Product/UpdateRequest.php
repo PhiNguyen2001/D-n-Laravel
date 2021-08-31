@@ -25,9 +25,9 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|max:50',
-            'price' => 'required|alpha_num',
-            'image' => 'required',
-            'quantity' => 'required|alpha_num',
+            'price' => 'required',
+            'image' => 'required|image',
+            'quantity' => 'required',
             'description' => 'required|min:10|max:500',
         ];
     }
@@ -35,8 +35,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name.max' => 'Tên sản phẩm không được quá 50 ký tự',
-            'price.alpha_num' => 'Giá sản phẩm phải là số ',
-            'quantity.alpha_num' => 'Số lượng phải là số',
+            'image.image' => 'Ảnh không đúng định dạng',
             'description.min' => 'Mô tả tối thiểu 10 ký tự',
             'description.max' => 'Mô tả tối đa 500 ký tự',
             'required' => ':attribute không được để trống',

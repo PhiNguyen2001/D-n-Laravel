@@ -12,7 +12,7 @@
                         <span class="text-base text-gray-800 dark:text-gray-400"> Tên sản phẩm : </span>
                         <input
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                            type="text" name="name" />
+                            type="text" name="name" value="{{ old('name')}}" />
                         @error('name')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                         @enderror
@@ -23,7 +23,7 @@
                         <span class="text-base text-gray-800 dark:text-gray-400"> Giá sản phẩm : </span>
                         <input
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                            type="number" name="price" />
+                            type="number" name="price" value="{{ old('price')}}" />
                         @error('price')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                         @enderror
@@ -34,7 +34,7 @@
                         <span class="text-base text-gray-800 dark:text-gray-400"> Ảnh sản phẩm : </span>
                         <input
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input "
-                            type='file' name="image" />
+                            type='file' name="image" value="{{ old('image')}}"/>
                         @error('image')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                         @enderror
@@ -45,7 +45,7 @@
                         <span class="text-base text-gray-800 dark:text-gray-400"> Số lượng : </span>
                         <input
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                            type="number" name="quantity" />
+                            type="number" name="quantity" value="{{ old('quantity')}}" />
                         @error('quantity')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                         @enderror
@@ -56,7 +56,7 @@
                         <span class="text-base text-gray-800 dark:text-gray-400"> Mô tả : </span>
                         <input
                             class="block w-full mt-1 text-sm dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:text-gray-300 dark:focus:shadow-outline-gray form-input"
-                            type="text" name="description" />
+                            type="text" name="description" value="{{ old('description')}}"/>
                         @error('description')
                             <span class="text-xs text-red-600 dark:text-red-400">{{ $message }}</span>
                         @enderror

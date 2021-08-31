@@ -26,30 +26,38 @@
                     <div class="filter-widget">
                         <h4 class="fw-title">Categories</h4>
                         @foreach ($category as $item)
-                        <ul class="filter-catagories">
-                            <li><a href="{{ route('cate-pro', ['id'=>$item->id])}}">{{$item->name}}</a></li>
-                        </ul>
+                            <ul class="filter-catagories">
+                                <li><a href="{{ route('cate-pro', ['id' => $item->id]) }}">{{ $item->name }}</a></li>
+                            </ul>
                         @endforeach
-                       
+
                     </div>
                     <div class="filter-widget">
                         <h4 class="fw-title">Price</h4>
-                        <div class="filter-range-wrap">
-                            <div class="range-slider">
-                                <div class="price-input">
-                                    <input type="text" id="minamount">
-                                    <input type="text" id="maxamount">
-                                </div>
-                            </div>
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="33" data-max="98">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            </div>
+                        <div class="fw-brand-check">
+                            <ul class="filter-catagories">
+                                <li> <a href="{{ route('filter') }}?price=1">
+                                        Dưới 100.000 Đ
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <ul class="filter-catagories">
+                                <li> <a href="{{ route('filter') }}?price=2">
+                                        100.000 - 200.000 Đ
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="filter-catagories">
+                                <li> <a href="{{ route('filter') }}?price=3">
+                                        200.000 - 400.000 Đ
+                                    </a>
+                                </li>
+                            </ul>
+
                         </div>
-                        <a href="#" class="filter-btn">Filter</a>
                     </div>
+
                     <div class="filter-widget">
                         <h4 class="fw-title">Color</h4>
                         <div class="fw-color-choose">
@@ -116,57 +124,77 @@
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="product-show-option">
                         <div class="row">
-                            <div class="col-lg-7 col-md-7">
-                                <div class="select-option">
-                                    <select class="sorting">
-                                        <option value="">Default Sorting</option>
-                                    </select>
-                                    <select class="p-show">
-                                        <option value="">Show:</option>
-                                    </select>
+                            <form method="GET" id="form_order">
+                                @csrf
+                                <div class="col-lg-7 col-md-7">
+                                    <div class="select-option">
+                                        <select class="sorting" name="sort" id="sort">
+                                            <option value="{{ Request::url() }}?sort_by=none">Sắp xếp theo</option>
+                                            <option value="{{ Request::url() }}?sort_by=kytu_az">Lọc tên từ A - Z</option>
+                                            <option value="{{ Request::url() }}?sort_by=kytu_za">Lọc tên từ Z - A</option>
+                                            <option value="{{ Request::url() }}?sort_by=tang_dan">Giá tăng dần</option>
+                                            <option value="{{ Request::url() }}?sort_by=giam_dan">Giá giảm dần</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-5 col-md-5 text-right">
-                                <p>Show 01- 09 Of 36 Product</p>
+                            </form>
+                            <div class="col-lg-5 col-md-10 text-right">
+                                <p>Show 01- 06 Of 18 Product</p>
                             </div>
                         </div>
                     </div>
                     <div class="product-list">
                         <div class="row">
                             @foreach ($product as $item)
-                            <div class="col-lg-4 col-sm-6">
-                                <div class="product-item">
-                                    <div class="pi-pic">
-                                        <img src="{{url('uploads')}}/{{$item->image}}" alt="">
-                                        <div class="icon">
-                                            <i class="icon_heart_alt"></i>
+                                <div class="col-lg-4 col-sm-6">
+                                    <div class="product-item">
+                                        <div class="pi-pic">
+                                            <img src="{{ url('uploads') }}/{{ $item->image }}" alt="">
+                                            <div class="icon">
+                                                <i class="icon_heart_alt"></i>
+                                            </div>
+                                            <ul>
+                                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
+                                                <li class="quick-view"><a href="{{ route('detail', ['id' => $item->id]) }}">+
+                                                        Quick View</a></li>
+                                                <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
+                                            </ul>
                                         </div>
-                                        <ul>
-                                            <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="{{route('detail', ['id'=>$item->id])}}">+ Quick View</a></li>
-                                            <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="pi-text">
-                                        {{-- <div class="catagory-name">Towel</div> --}}
-                                        <a href="{{route('detail', ['id'=>$item->id])}}">
-                                            <h5>{{$item->name}}</h5>
-                                        </a>
-                                        <div class="product-price">
-                                            {{number_format($item->price)}}đ
+                                        <div class="pi-text">
+                                            {{-- <div class="catagory-name">Towel</div> --}}
+                                            <a href="{{ route('detail', ['id' => $item->id]) }}">
+                                                <h5>{{ $item->name }}</h5>
+                                            </a>
+                                            <div class="product-price">
+                                                {{ number_format($item->price) }}đ
+                                            </div>
                                         </div>
                                     </div>
+                                   
                                 </div>
-                            </div>
+                                
                             @endforeach
+                           
                         </div>
                     </div>
-                    {{-- <div class="d-flex justify-content-end">
-                        {!! $product->links() !!}
-                    </div> --}}
+                    
                 </div>
             </div>
         </div>
+      
     </section>
     <!-- Product Shop Section End -->
 @endsection
+@push('script')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#sort').on('change', function() {
+                var url = $(this).val();
+                if (url) {
+                    window.location = url;
+                }
+                return false;
+            });
+        });
+    </script>
+@endpush

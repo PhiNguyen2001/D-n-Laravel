@@ -22,7 +22,7 @@ class LoginController extends Controller
             return redirect()->route('admin.dashboard');
         } else {
 
-            $alert = 'Sai Email hoặc Mật Khẩu!';
+            $alert = 'Lỗi đăng nhập!';
 
             return redirect()->back()->with('alert', $alert);
         }

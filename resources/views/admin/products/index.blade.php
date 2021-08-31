@@ -119,5 +119,5 @@
         @endif
         {{ $data->links() }}     
     </div>
- 
 @endsection
+

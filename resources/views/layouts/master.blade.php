@@ -13,15 +13,15 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
 
     <!-- Css Styles -->
-    <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('frontend/css/font-awesome.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('frontend/css/themify-icons.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('frontend/css/elegant-icons.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('frontend/css/owl.carousel.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('frontend/css/nice-select.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('frontend/css/jquery-ui.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('frontend/css/slicknav.min.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/font-awesome.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/themify-icons.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/elegant-icons.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/nice-select.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/jquery-ui.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/slicknav.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}" type="text/css">
 </head>
 
 <body>
@@ -44,13 +44,13 @@
                 </div>
                 <div class="ht-right">
                     <a href="/login" class="login-panel"><i class="fa fa-user"></i>Login</a>
-                   
+
                     <div class="lan-selector">
                         <select class="language_drop" name="countries" id="countries" style="width:300px;">
-                            <option value='yt' data-image="{{asset('frontend/img/flag-1.jpg')}}" data-imagecss="flag yt"
-                                data-title="English">English</option>
-                            <option value='yu' data-image="{{asset('frontend/img/flag-2.jpg')}}" data-imagecss="flag yu"
-                                data-title="Bangladesh">German </option>
+                            <option value='yt' data-image="{{ asset('frontend/img/flag-1.jpg') }}"
+                                data-imagecss="flag yt" data-title="English">English</option>
+                            <option value='yu' data-image="{{ asset('frontend/img/flag-2.jpg') }}"
+                                data-imagecss="flag yu" data-title="Bangladesh">German </option>
                         </select>
                     </div>
                     <div class="top-social">
@@ -68,18 +68,21 @@
                     <div class="col-lg-2 col-md-2">
                         <div class="logo">
                             <a href="/home">
-                                <img src="{{asset('frontend/img/logo.png')}}" alt="">
+                                <img src="{{ asset('frontend/img/logo.png') }}" alt="">
                             </a>
                         </div>
                     </div>
                     <div class="col-lg-7 col-md-7">
-                        <div class="advanced-search">
-                            <button type="button" class="category-btn">All Categories</button>
-                            <div class="input-group">
-                                <input type="text" placeholder="What do you need?">
-                                <button type="button"><i class="ti-search"></i></button>
+                            <div class="advanced-search">
+                                <button type="button" class="category-btn">All Categories</button>
+                                <form action="/search" method="GET">
+                                    <div class="input-group">
+                                        <input type="text" aria-label="Search" name="keyword"
+                                            value="{{ old('keyword') }}" placeholder="What do you need?">
+                                        <button type="button"><i class="ti-search"></i></button>
+                                    </div>
+                                </form>
                             </div>
-                        </div>
                     </div>
                     <div class="col-lg-3 text-right col-md-3">
                         <ul class="nav-right">
@@ -90,7 +93,7 @@
                                 </a>
                             </li>
                             <li class="cart-icon">
-                                <a href="#">
+                                <a href="/cart">
                                     <i class="icon_bag_alt"></i>
                                     <span>3</span>
                                 </a>
@@ -99,7 +102,9 @@
                                         <table>
                                             <tbody>
                                                 <tr>
-                                                    <td class="si-pic"><img src="{{asset('frontend/img/select-product-1.jpg')}}" alt=""></td>
+                                                    <td class="si-pic"><img
+                                                            src="{{ asset('frontend/img/select-product-1.jpg') }}"
+                                                            alt=""></td>
                                                     <td class="si-text">
                                                         <div class="product-selected">
                                                             <p>$60.00 x 1</p>
@@ -111,7 +116,9 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td class="si-pic"><img src="{{asset('frontend/img/select-product-2.jpg')}}" alt=""></td>
+                                                    <td class="si-pic"><img
+                                                            src="{{ asset('frontend/img/select-product-2.jpg') }}"
+                                                            alt=""></td>
                                                     <td class="si-text">
                                                         <div class="product-selected">
                                                             <p>$60.00 x 1</p>
@@ -161,7 +168,7 @@
                 </div>
                 <nav class="nav-menu mobile-menu">
                     <ul>
-                        <li ><a href="/home">Home</a></li>
+                        <li><a href="/home">Home</a></li>
                         <li><a href="/shop">Shop</a></li>
                         <li><a href="./blog.html">Blog</a></li>
                         <li><a href="./contact.html">Contact</a></li>
@@ -190,27 +197,27 @@
             <div class="logo-carousel owl-carousel">
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="{{asset('frontend/img/logo-carousel/logo-1.png')}}" alt="">
+                        <img src="{{ asset('frontend/img/logo-carousel/logo-1.png') }}" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="{{asset('frontend/img/logo-carousel/logo-2.png')}}" alt="">
+                        <img src="{{ asset('frontend/img/logo-carousel/logo-2.png') }}" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="{{asset('frontend/img/logo-carousel/logo-3.png')}}" alt="">
+                        <img src="{{ asset('frontend/img/logo-carousel/logo-3.png') }}" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="{{asset('frontend/img/logo-carousel/logo-4.png')}}" alt="">
+                        <img src="{{ asset('frontend/img/logo-carousel/logo-4.png') }}" alt="">
                     </div>
                 </div>
                 <div class="logo-item">
                     <div class="tablecell-inner">
-                        <img src="{{asset('frontend/img/logo-carousel/logo-5.png')}}" alt="">
+                        <img src="{{ asset('frontend/img/logo-carousel/logo-5.png') }}" alt="">
                     </div>
                 </div>
             </div>
@@ -225,7 +232,7 @@
                 <div class="col-lg-3">
                     <div class="footer-left">
                         <div class="footer-logo">
-                            <a href="#"><img src="{{asset('frontend/img/footer-logo.png')}}" alt=""></a>
+                            <a href="#"><img src="{{ asset('frontend/img/footer-logo.png') }}" alt=""></a>
                         </div>
                         <ul>
                             <li>Address: 60-49 Road 11378 New York</li>
@@ -288,7 +295,7 @@
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </div>
                         <div class="payment-pic">
-                            <img src="{{asset('frontend/img/payment-method.png')}}" alt="">
+                            <img src="{{ asset('frontend/img/payment-method.png') }}" alt="">
                         </div>
                     </div>
                 </div>
@@ -298,19 +305,19 @@
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="{{asset('frontend/js/jquery-3.3.1.min.js')}}"></script>
-    <script src="{{asset('frontend/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery-ui.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.countdown.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.nice-select.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.zoom.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.dd.min.js')}}"></script>
-    <script src="{{asset('frontend/js/jquery.slicknav.js')}}"></script>
-    <script src="{{asset('frontend/js/owl.carousel.min.js')}}"></script>
-    <script src="{{asset('frontend/js/main.js')}}"></script>
-    
+    <script src="{{ asset('frontend/js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.nice-select.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.zoom.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.dd.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/jquery.slicknav.js') }}"></script>
+    <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/main.js') }}"></script>
 
-    
+    @stack('script')
+
 </body>
 
 </html>

@@ -9,18 +9,18 @@ use App\Models\Category;
 use App\Http\Requests\Admin\Product\ProductRequest;
 use App\Http\Requests\Admin\Product\UpdateRequest;
 
+
 class ProductController extends Controller
 {
     public function index(Request $request)
     {
-        
-        $ListProd = Product::all();
+        $ListProd = Product::paginate(9);
         if ($request->has('keyword') == true) {
             $keyword = $request->get('keyword');
             // SELECT * FROM users WHERE email LIKE '%keyword%'
             $ListProd = Product::where('name', 'LIKE', "%$keyword%")->get();
         } else {
-            $ListProd = Product::paginate(10);
+            $ListProd = Product::Paginate(9);
         }
         $ListProd->load(['category']);
         return view('admin/products/index', ['data' => $ListProd,] );
@@ -89,4 +89,3 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index');
     }
 }
-// $plane = Planes::where("id", "=", "$id")->get();

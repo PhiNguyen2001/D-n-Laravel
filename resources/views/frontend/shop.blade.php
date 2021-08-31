@@ -3,6 +3,7 @@
     Shop
 @endsection
 @section('contents')
+
     <!-- Breadcrumb Section Begin -->
     <div class="breacrumb-section">
         <div class="container">
@@ -34,22 +35,30 @@
                     </div>
                     <div class="filter-widget">
                         <h4 class="fw-title">Price</h4>
-                        <div class="filter-range-wrap">
-                            <div class="range-slider">
-                                <div class="price-input">
-                                    <input type="text" id="minamount">
-                                    <input type="text" id="maxamount">
-                                </div>
-                            </div>
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="33" data-max="98">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                                <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
-                            </div>
+                        <div class="fw-brand-check">
+                            <ul class="filter-catagories">
+                                <li> <a href="{{ route('filter') }}?price=1">
+                                        Dưới 100.000 Đ
+                                    </a>
+                                </li>
+                            </ul>
+
+                            <ul class="filter-catagories">
+                                <li> <a href="{{ route('filter') }}?price=2">
+                                        100.000 - 200.000 Đ
+                                    </a>
+                                </li>
+                            </ul>
+                            <ul class="filter-catagories">
+                                <li> <a href="{{ route('filter') }}?price=3">
+                                        200.000 - 400.000 Đ
+                                    </a>
+                                </li>
+                            </ul>
+
                         </div>
-                        <a href="#" class="filter-btn">Filter</a>
                     </div>
+
                     <div class="filter-widget">
                         <h4 class="fw-title">Color</h4>
                         <div class="fw-color-choose">
@@ -116,7 +125,7 @@
                 <div class="col-lg-9 order-1 order-lg-2">
                     <div class="product-show-option">
                         <div class="row">
-                            <form>
+                            <form method="GET" id="form_order">
                                 @csrf
                                 <div class="col-lg-7 col-md-7">
                                     <div class="select-option">
@@ -130,8 +139,8 @@
                                     </div>
                                 </div>
                             </form>
-                            <div class="col-lg-5 col-md-5 text-right">
-                                <p>Show 01- 09 Of 36 Product</p>
+                            <div class="col-lg-5 col-md-10 text-right">
+                                <p>Show 01- 06 Of 18 Product</p>
                             </div>
                         </div>
                     </div>
@@ -146,28 +155,35 @@
                                                 <i class="icon_heart_alt"></i>
                                             </div>
                                             <ul>
-                                                <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                                <li class="quick-view"><a href="{{route('detail', ['id'=>$item->id])}}">+ Quick View</a></li>
+                                                <li class="w-icon active"><a
+                                                        href="{{ url('/Add-Cart/' . $item->id) }}"><i
+                                                            class="icon_bag_alt"></i></a></li>
+                                                <li class="quick-view"><a
+                                                        href="{{ route('detail', ['id' => $item->id]) }}">+
+                                                        Quick View</a></li>
                                                 <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                             </ul>
                                         </div>
                                         <div class="pi-text">
                                             {{-- <div class="catagory-name">Towel</div> --}}
-                                            <a href="{{route('detail', ['id'=>$item->id])}}">
+                                            <a href="{{ route('detail', ['id' => $item->id]) }}">
                                                 <h5>{{ $item->name }}</h5>
                                             </a>
                                             <div class="product-price">
-                                                {{number_format($item->price)}}đ
+                                                {{ number_format($item->price) }}đ
                                             </div>
                                         </div>
+
                                     </div>
+
                                 </div>
+
                             @endforeach
                         </div>
                     </div>
-                    <div class="d-flex justify-content-end">
-                        {!! $product->links() !!}
-                    </div>
+                    {{-- <div class="d-flex justify-content-end">
+                        {{ $product->links() }}
+                    </div> --}}
                 </div>
             </div>
         </div>
